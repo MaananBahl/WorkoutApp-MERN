@@ -1,13 +1,14 @@
-import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useWorkoutsContext } from "../hooks/UseWorkoutsContext";
 
 const WorkoutForm = ({open, setOpen}) => {
+  const { dispatch } = useWorkoutsContext();
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState('');
   const [reps, setReps] = useState('');
@@ -40,9 +41,13 @@ const WorkoutForm = ({open, setOpen}) => {
         setReps(null);
         setError(null);
         console.log("New workout added");
+        dispatch({
+          type: 'CREATE_WORKOUT',
+          payload: json
+        })
     }
     setOpen(false);
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (
