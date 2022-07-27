@@ -51,4 +51,11 @@ header a {
 
 .addButton{
   margin-left: auto!important;
+  background: var(--primary)!important;
+  border: 0!important;
+  color: #fff!important;
+  padding: 10px!important;
+  font-family: "Poppins"!important;
+  border-radius: 4px!important;
+  cursor: pointer!important;
 }
