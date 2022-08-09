@@ -6,8 +6,26 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import mypic from "../assets/mypic.png";
+import { useWorkoutsContext } from "../hooks/UseWorkoutsContext";
 
 const WorkoutDetails = ({ workout }) => {
+  const { dispatch } = useWorkoutsContext();
+
+  const handleDelete = async () => {
+    const response = await fetch('/api/workouts/' + workout._id, {
+      method: "DELETE",
+    })
+
+    const json = await response.json();
+
+    if(response.ok){
+      dispatch({
+        type: 'DELETE_WORKOUT',
+        payload: json
+      })
+    }
+  }
+
   return (
       <Card sx={{ maxWidth: 345, margin: "1rem", width: '100%' }}>
         <CardMedia
@@ -32,7 +50,7 @@ const WorkoutDetails = ({ workout }) => {
         </CardContent>
         <CardActions sx={{margin: '0 0 0.5rem 0.5rem'}}>
           <Button variant="outlined" size="small">Edit</Button>
-          <Button variant="outlined" size="small">Delete</Button>
+          <Button variant="outlined" size="small" onClick={handleDelete}>Delete</Button>
         </CardActions>
       </Card>
   );
