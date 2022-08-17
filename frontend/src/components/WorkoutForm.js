@@ -21,6 +21,7 @@ const WorkoutForm = ({open, setOpen}) => {
   const handleAdd = async () => {
 
     const workout = {title, load, reps};
+    console.log(workout);
     const response = await fetch('/api/workouts', {
         method: "POST",
         body: JSON.stringify(workout),

@@ -28,15 +28,15 @@ const WorkoutDetails = ({ workout }) => {
 
   return (
       <Card sx={{ maxWidth: 345, margin: "1rem", width: '100%' }}>
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="140"
           // image={process.env.PUBLIC_URL + "/mypic.png"}
           image={mypic}
           alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        /> */}
+        <CardContent className="workout_container">
+          <Typography gutterBottom variant="h5" component="div" className="workout_title">
             {workout.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -49,8 +49,8 @@ const WorkoutDetails = ({ workout }) => {
           </Typography>
         </CardContent>
         <CardActions sx={{margin: '0 0 0.5rem 0.5rem'}}>
-          <Button variant="outlined" size="small">Edit</Button>
-          <Button variant="outlined" size="small" onClick={handleDelete}>Delete</Button>
+          {/* <Button variant="outlined" size="small">Edit</Button> */}
+          <Button size="small" onClick={handleDelete} className="delete_button">Delete</Button>
         </CardActions>
       </Card>
   );
