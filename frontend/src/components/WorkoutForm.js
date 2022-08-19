@@ -13,6 +13,7 @@ const WorkoutForm = ({open, setOpen}) => {
   const [load, setLoad] = useState('');
   const [reps, setReps] = useState('');
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleClose = () => {
     setOpen(false);
@@ -34,6 +35,7 @@ const WorkoutForm = ({open, setOpen}) => {
 
     if(!response.ok){
         setError(json.error);
+        setEmptyFields(json.emptyFields);
     }
 
     if(response.ok){
@@ -41,20 +43,23 @@ const WorkoutForm = ({open, setOpen}) => {
         setLoad(null);
         setReps(null);
         setError(null);
+        setEmptyFields([]);
         console.log("New workout added");
         dispatch({
           type: 'CREATE_WORKOUT',
           payload: json
         })
+        setOpen(false);
     }
-    setOpen(false);
+    
     // window.location.reload();
   }
 
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add a New Workout</DialogTitle>
+        <DialogTitle className="dialogTitle">Add a New Workout</DialogTitle>
+        { error!=null ? <div style={{color: "red", fontSize: '0.8rem', margin: '1.5rem 1rem 0 1.6rem'}}>{error}</div> : null}
         <DialogContent>
           <TextField
             autoFocus
@@ -63,9 +68,12 @@ const WorkoutForm = ({open, setOpen}) => {
             label="Exercise Title"
             type="text"
             fullWidth
-            variant="standard"
+            variant="outlined"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
+            style={{width: "99%"}}
+            color={emptyFields.includes('title') ? "error" : "primary"}
+            className={emptyFields.includes('title') ? 'error' : ''}
           />
           <TextField
             autoFocus
@@ -74,9 +82,12 @@ const WorkoutForm = ({open, setOpen}) => {
             label="Load (in Kgs)"
             type="number"
             fullWidth
-            variant="standard"
+            variant="outlined"
             onChange={(e) => setLoad(e.target.value)}
             value={load}
+            style={{width: "99%"}}
+            color={emptyFields.includes('load') ? "error" : "primary"}
+            className={emptyFields.includes('load') ? 'error' : ''}
           />
           <TextField
             autoFocus
@@ -85,14 +96,17 @@ const WorkoutForm = ({open, setOpen}) => {
             label="Reps"
             type="number"
             fullWidth
-            variant="standard"
+            variant="outlined"
             onChange={(e) => setReps(e.target.value)}
             value={reps}
+            style={{width: "99%"}}
+            color={emptyFields.includes('reps') ? "error" : "primary"}
+            className={emptyFields.includes('reps') ? 'error' : ''}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleAdd}>Add</Button>
+          <Button variant="outlined" onClick={handleClose}>Cancel</Button>
+          <Button variant="outlined" onClick={handleAdd}>Add</Button>
         </DialogActions>
       </Dialog>
     </div>

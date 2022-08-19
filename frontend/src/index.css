@@ -1,5 +1,5 @@
 /* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
 
 /* layout */
 :root {
@@ -26,7 +26,7 @@ header a {
   color: #333;
   text-decoration: none;
 }
-.pages{
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
@@ -34,7 +34,7 @@ header a {
 
 /* Home page styles */
 
-.home{
+.home {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,34 +42,43 @@ header a {
   flex-wrap: wrap;
 }
 
-.workoutsContainer{
+.workoutsContainer {
   width: 270px;
   display: flex;
 }
 
-.workout_container{
-  padding: 12px 16px 0px 16px!important;
+.workout_container {
+  padding: 12px 16px 0px 16px !important;
 }
 
-/* Navbar page styles */
-
-.addButton{
-  margin-left: auto!important;
-  background: var(--primary)!important;
-  border: 0!important;
-  color: #fff!important;
-  padding: 10px!important;
-  font-family: "Poppins"!important;
-  border-radius: 4px!important;
-  cursor: pointer!important;
+.addButton {
+  margin-left: auto !important;
+  background: var(--primary) !important;
+  border: 0 !important;
+  color: #fff !important;
+  padding: 10px !important;
+  font-family: "Poppins" !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
 }
 
-.delete_button{
-  background-color: #e73535c9!important;
-  color: #fff!important;
+.delete_button {
+  background-color: #ddd !important;
+  color: black !important;
+  border-radius: 10px !important;
+  min-width: 40px !important;
 }
 
-.workout_title{
-  color: var(--primary)!important;
-  font-weight: bold!important;
+.workout_title {
+  color: var(--primary) !important;
+  font-weight: bold !important;
+}
+
+.dialogTitle {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+.error {
+  border: 1px solid var(--error) !important;
 }
