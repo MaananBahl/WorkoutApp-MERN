@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import mypic from "../assets/mypic.png";
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { useWorkoutsContext } from "../hooks/UseWorkoutsContext";
 
 const WorkoutDetails = ({ workout }) => {
@@ -50,7 +51,7 @@ const WorkoutDetails = ({ workout }) => {
         </CardContent>
         <CardActions sx={{margin: '0 0 0.5rem 0.5rem'}}>
           {/* <Button variant="outlined" size="small">Edit</Button> */}
-          <Button size="small" onClick={handleDelete} className="delete_button">Delete</Button>
+          <Button size="small" onClick={handleDelete} className="delete_button"><DeleteOutlinedIcon/></Button>
         </CardActions>
       </Card>
   );
